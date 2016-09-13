@@ -1,0 +1,26 @@
+{
+	"name": "angular_workflow",
+	"description": "",
+	"main": "",
+	"moduleType": [],
+	"license": "MIT",
+	"homepage": "",
+	"private": true,
+	"dependencies":{
+		"angular":"1.5.8",
+		"angular-route":"1.5.8",
+		"angular-sanitize":"1.5.8",
+		"angular-mocks":"1.5.8",
+		"jquery":"latest",
+		"underscore":"latest",
+		"restangular":"latest"
+	},
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"libs",
+		"test",
+		"tests"
+	]
+}
