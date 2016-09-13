@@ -16,7 +16,7 @@ var controllers = angular.module('ExampleApp.controllers', [])
 		UserdataService.getFirstUsername().then(function(firstUsername){
 			$scope.firstUsername = firstUsername;
 		});
-	}); 
+	});
 /**
  * Restangular-based data service, fetches user data from the backend
  *
