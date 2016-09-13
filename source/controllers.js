@@ -9,4 +9,4 @@ var controllers = angular.module('ExampleApp.controllers', [])
 		UserdataService.getFirstUsername().then(function(firstUsername){
 			$scope.firstUsername = firstUsername;
 		});
-	});
+	}); 

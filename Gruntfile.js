@@ -3,6 +3,9 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-jsdoc');
 	
 	grunt.initConfig({
@@ -58,6 +61,13 @@ module.exports = function(grunt){
 				'dest': 'dist/<%= pkg.namelower %>-<%= pkg.version %>.js'
 			}
 		},
+		'less': {
+			'compile': {
+				'files': {
+					'dist/<%= pkg.namelower %>-<%= pkg.version %>.css': 'less/theme.less'
+				}
+			}
+		},
 		'uglify': {
 			'options':{
 				'mangle':false
@@ -73,6 +83,29 @@ module.exports = function(grunt){
 			'options': {
 				'destination':'doc'
 			}
+		},
+		'cssmin':{
+			'target':{
+				'files':{
+					'dist/<%= pkg.namelower %>-<%= pkg.version %>.min.css': 'dist/<%= pkg.namelower %>-<%= pkg.version %>.css'
+				}
+			}
+		},
+		'watch':{
+			'less':{
+				'files':'less/**/*.less',
+				'tasks':['less','cssmin'],
+				'options': {
+					'livereload': true
+				}
+			},
+			'scripts':{
+				'files':'source/**/*.js',
+				'tasks':['jshint','concat','uglify'],
+				'options':{
+					'livereload': true
+				}
+			}
 		}
 	});
 	
@@ -84,6 +117,8 @@ module.exports = function(grunt){
 							'concat',
 							'karma:dist',
 							'uglify',
+							'less',
+							'cssmin',
 							'karma:minified',
 							'jsdoc'
 						]);
